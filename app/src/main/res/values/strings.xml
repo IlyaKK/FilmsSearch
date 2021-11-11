@@ -2,4 +2,8 @@
     <string name="app_name">Films Searching</string>
     <string name="now_playing">Now Playing</string>
     <string name="upcoming">Upcoming</string>
+    <string name="search">Search</string>
+    <string name="content_description_search">Search film</string>
+    <string name="more">More</string>
+    <string name="content_description_more">Additional settings</string>
 </resources>
