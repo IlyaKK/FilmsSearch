@@ -9,4 +9,5 @@
     <string name="text_label_home">Home</string>
     <string name="text_label_favorite">Favorite</string>
     <string name="text_label_ratings">Ratings</string>
+    <string name="content_description_poster_film">Poster of film</string>
 </resources>

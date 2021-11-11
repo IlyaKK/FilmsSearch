@@ -1,5 +1,7 @@
 package com.elijahcorp.filmssearch.model
 
+import com.elijahcorp.filmssearch.R
+
 class RepositoryImpl : Repository {
     override fun getFilmsFromServer(): List<Film> {
         val films: ArrayList<Film> = ArrayList()
@@ -8,15 +10,9 @@ class RepositoryImpl : Repository {
                 name = "Дюна",
                 data = "03.09.2021",
                 rang = 7.8,
-                pathOfImage = "app/src/main/res/drawable/dune.jpeg"
+                pathOfImage = R.drawable.dune
             )
         )
         return films
     }
-
-    override fun getFilmsFromLocalStorage(): List<Film> {
-        TODO("Not yet implemented")
-    }
-
-
 }
