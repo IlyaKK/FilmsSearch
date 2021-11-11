@@ -6,4 +6,7 @@
     <string name="content_description_search">Search film</string>
     <string name="more">More</string>
     <string name="content_description_more">Additional settings</string>
+    <string name="text_label_home">Home</string>
+    <string name="text_label_favorite">Favorite</string>
+    <string name="text_label_ratings">Ratings</string>
 </resources>
