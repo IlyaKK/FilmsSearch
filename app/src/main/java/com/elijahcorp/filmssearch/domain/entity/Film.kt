@@ -1,4 +1,4 @@
-package com.elijahcorp.filmssearch.model
+package com.elijahcorp.filmssearch.domain.entity
 
 data class Film(
     val name: String,

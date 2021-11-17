@@ -1,4 +1,4 @@
-package com.elijahcorp.filmssearch.view
+package com.elijahcorp.filmssearch.ui.screens.screen_with_two_groups_films
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.elijahcorp.filmssearch.view_model.AppState
+import com.elijahcorp.filmssearch.ui.screens.screen_with_two_groups_films.view_model.AppState
 import com.elijahcorp.filmssearch.R
 import com.elijahcorp.filmssearch.databinding.ListsFilmsFragmentBinding
-import com.elijahcorp.filmssearch.model.Film
-import com.elijahcorp.filmssearch.view_model.ListsFilmsViewModel
+import com.elijahcorp.filmssearch.domain.entity.Film
+import com.elijahcorp.filmssearch.ui.screens.screen_with_two_groups_films.view_model.ListsFilmsViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class ListsFilmsFragment : Fragment(R.layout.lists_films_fragment) {

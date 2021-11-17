@@ -1,4 +1,4 @@
-package com.elijahcorp.filmssearch.view
+package com.elijahcorp.filmssearch.ui.screens.screen_with_two_groups_films
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.elijahcorp.filmssearch.R
-import com.elijahcorp.filmssearch.model.Film
+import com.elijahcorp.filmssearch.domain.entity.Film
 import com.google.android.material.textview.MaterialTextView
 
 class FilmVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
