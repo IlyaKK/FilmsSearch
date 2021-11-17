@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">FilmsSearch</string>
+    <string name="app_name">Films Searching</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="search">Search</string>
+    <string name="content_description_search">Search film</string>
+    <string name="more">More</string>
+    <string name="content_description_more">Additional settings</string>
+    <string name="text_label_home">Home</string>
+    <string name="text_label_favorite">Favorite</string>
+    <string name="text_label_ratings">Ratings</string>
+    <string name="content_description_poster_film">Poster of film</string>
 </resources>
