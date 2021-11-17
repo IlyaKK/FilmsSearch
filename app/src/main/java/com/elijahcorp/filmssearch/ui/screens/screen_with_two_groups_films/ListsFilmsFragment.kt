@@ -51,16 +51,16 @@ class ListsFilmsFragment : Fragment(R.layout.lists_films_fragment) {
         when (appState) {
             is AppState.Success -> {
                 val filmsData = appState.filmsData
-                binding.loadingLayout.visibility = View.GONE
+                binding.loadingConstraintLayout.visibility = View.GONE
                 setData(filmsData)
             }
             is AppState.Loading -> {
-                binding.loadingLayout.visibility = View.VISIBLE
+                binding.loadingConstraintLayout.visibility = View.VISIBLE
             }
             is AppState.Error -> {
-                binding.loadingLayout.visibility = View.GONE
+                binding.loadingConstraintLayout.visibility = View.GONE
                 Snackbar
-                    .make(binding.mainView, "Error", Snackbar.LENGTH_INDEFINITE)
+                    .make(binding.mainConstraintLayout, "Error", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Reload") { viewModel.getFilmsFromLocalSource() }
                     .show()
             }
