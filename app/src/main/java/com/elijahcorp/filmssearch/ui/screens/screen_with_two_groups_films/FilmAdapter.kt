@@ -1,9 +1,9 @@
-package com.elijahcorp.filmssearch.view
+package com.elijahcorp.filmssearch.ui.screens.screen_with_two_groups_films
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.elijahcorp.filmssearch.model.Film
+import com.elijahcorp.filmssearch.domain.entity.Film
 
 class FilmAdapter : RecyclerView.Adapter<FilmVh>() {
     private var dataFilms: List<Film> = ArrayList()

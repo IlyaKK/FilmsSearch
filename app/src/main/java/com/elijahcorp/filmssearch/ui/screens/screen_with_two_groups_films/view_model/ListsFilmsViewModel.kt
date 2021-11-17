@@ -1,9 +1,9 @@
-package com.elijahcorp.filmssearch.view_model
+package com.elijahcorp.filmssearch.ui.screens.screen_with_two_groups_films.view_model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.elijahcorp.filmssearch.model.Repository
-import com.elijahcorp.filmssearch.model.RepositoryImpl
+import com.elijahcorp.filmssearch.domain.repo.Repository
+import com.elijahcorp.filmssearch.domain.repo.impl.RepositoryImpl
 import java.lang.Thread.sleep
 
 class ListsFilmsViewModel(

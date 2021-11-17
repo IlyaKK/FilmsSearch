@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_home"
+        android:id="@+id/page_home_item_menu"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/text_label_home" />
     <item
-        android:id="@+id/page_favorite"
+        android:id="@+id/page_favorite_item_menu"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_favorite_24"
         android:title="@string/text_label_favorite" />
 
     <item
-        android:id="@+id/page_ratings"
+        android:id="@+id/page_ratings_item_menu"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_analytics_24"
         android:title="@string/text_label_ratings" />

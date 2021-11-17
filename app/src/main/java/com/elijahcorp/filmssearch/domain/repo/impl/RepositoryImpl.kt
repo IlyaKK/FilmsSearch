@@ -1,6 +1,8 @@
-package com.elijahcorp.filmssearch.model
+package com.elijahcorp.filmssearch.domain.repo.impl
 
 import com.elijahcorp.filmssearch.R
+import com.elijahcorp.filmssearch.domain.entity.Film
+import com.elijahcorp.filmssearch.domain.repo.Repository
 
 class RepositoryImpl : Repository {
     override fun getFilmsFromServer(): List<Film> {
