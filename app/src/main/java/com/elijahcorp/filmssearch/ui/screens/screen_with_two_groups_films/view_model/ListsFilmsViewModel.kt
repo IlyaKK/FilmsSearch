@@ -7,20 +7,25 @@ import com.elijahcorp.filmssearch.domain.repo.impl.RepositoryImpl
 import java.lang.Thread.sleep
 
 class ListsFilmsViewModel(
-    private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
     private val repositoryImpl: Repository = RepositoryImpl()
 ) :
     ViewModel() {
+    val liveDataNewFilmsToObserve = MutableLiveData<AppState>()
+    val liveDataUpcomingFilmsToObserve = MutableLiveData<AppState>()
 
-    fun getLiveData() = liveDataToObserve
-
-    fun getFilmsFromLocalSource() = getDataFromLocalSource()
-
-    private fun getDataFromLocalSource() {
-        liveDataToObserve.value = AppState.Loading
+    fun getNowFilmsFromServer() {
+        liveDataNewFilmsToObserve.postValue(AppState.LoadingNowFilms)
         Thread {
-            sleep(3000)
-            liveDataToObserve.postValue(AppState.Success(repositoryImpl.getFilmsFromServer()))
+            sleep(2000)
+            liveDataNewFilmsToObserve.postValue(AppState.SuccessLoadingNowFilms(repositoryImpl.getNowFilmsFromServer()))
+        }.start()
+    }
+
+    fun getUpcomingFilmsFromServer() {
+        liveDataUpcomingFilmsToObserve.postValue(AppState.LoadingUpcomingFilms)
+        Thread {
+            sleep(2000)
+            liveDataUpcomingFilmsToObserve.postValue(AppState.SuccessLoadingUpcomingFilms(repositoryImpl.getUpcomingFilmsFromServer()))
         }.start()
     }
 }

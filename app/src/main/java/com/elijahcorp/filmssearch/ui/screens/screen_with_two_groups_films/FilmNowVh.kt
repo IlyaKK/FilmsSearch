@@ -9,15 +9,14 @@ import com.elijahcorp.filmssearch.R
 import com.elijahcorp.filmssearch.domain.entity.Film
 import com.google.android.material.textview.MaterialTextView
 
-class FilmVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class FilmNowVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private lateinit var posterImageView: ImageView
     private lateinit var nameFilmTextView: MaterialTextView
     private lateinit var dataFilmTextView: MaterialTextView
     private lateinit var ratingFilmTextView: MaterialTextView
-    private lateinit var film: Film
 
     constructor(parent: ViewGroup) : this(
-        LayoutInflater.from(parent.context).inflate(R.layout.one_film, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.one_film_now, parent, false)
     ) {
         initialiseViews()
     }

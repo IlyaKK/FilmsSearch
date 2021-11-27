@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.elijahcorp.filmssearch.domain.entity.Film
 
-class FilmAdapter : RecyclerView.Adapter<FilmVh>() {
+class FilmNowAdapter : RecyclerView.Adapter<FilmNowVh>() {
     private var dataFilms: List<Film> = ArrayList()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -14,11 +14,11 @@ class FilmAdapter : RecyclerView.Adapter<FilmVh>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmVh {
-        return FilmVh(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmNowVh {
+        return FilmNowVh(parent)
     }
 
-    override fun onBindViewHolder(holder: FilmVh, position: Int) {
+    override fun onBindViewHolder(holder: FilmNowVh, position: Int) {
         holder.bind(getOneFilm(position))
     }
 

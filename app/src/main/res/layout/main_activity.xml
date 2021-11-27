@@ -20,19 +20,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
+        android:id="@+id/fragment_container_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <FrameLayout
-            android:id="@+id/fragment_container_frame_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.main.MainActivity" />
-
-    </androidx.core.widget.NestedScrollView>
+        tools:context=".ui.main.MainActivity" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_view"

@@ -16,58 +16,87 @@ import com.elijahcorp.filmssearch.ui.screens.screen_with_two_groups_films.view_m
 import com.google.android.material.snackbar.Snackbar
 
 class ListsFilmsFragment : Fragment(R.layout.lists_films_fragment) {
-    private val filmAdapter = FilmAdapter()
+    private val filmNowAdapter = FilmNowAdapter()
+    private val filmUpcomingAdapter = FilmUpcomingNowAdapter()
     private lateinit var binding: ListsFilmsFragmentBinding
+    private lateinit var viewModel: ListsFilmsViewModel
 
     companion object {
         fun newInstance() = ListsFilmsFragment()
     }
 
-    private lateinit var viewModel: ListsFilmsViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ListsFilmsFragmentBinding.inflate(inflater)
+        binding = ListsFilmsFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initialiseNowPlayingListRecycleView()
+        initialiseNowPlayingFilmsListRecycleView()
+        initialiseUpcomingFilmsListRecycleView()
         viewModel = ViewModelProvider(this).get(ListsFilmsViewModel::class.java)
-        viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
-        viewModel.getFilmsFromLocalSource()
+        viewModel.liveDataNewFilmsToObserve.observe(viewLifecycleOwner, { renderData(it) })
+        viewModel.liveDataUpcomingFilmsToObserve.observe(viewLifecycleOwner, { renderData(it) })
+        viewModel.getNowFilmsFromServer()
+        viewModel.getUpcomingFilmsFromServer()
     }
 
-    private fun initialiseNowPlayingListRecycleView() {
+    private fun initialiseNowPlayingFilmsListRecycleView() {
         binding.filmsNowRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, true)
-        binding.filmsNowRecyclerView.adapter = filmAdapter
+        binding.filmsNowRecyclerView.adapter = filmNowAdapter
+    }
+
+    private fun initialiseUpcomingFilmsListRecycleView() {
+        binding.filmsUpcomingRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, true)
+        binding.filmsUpcomingRecyclerView.adapter = filmUpcomingAdapter
     }
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Success -> {
-                val filmsData = appState.filmsData
-                binding.loadingConstraintLayout.visibility = View.GONE
-                setData(filmsData)
+            is AppState.SuccessLoadingNowFilms -> {
+                val filmsNowData = appState.filmsNowData
+                binding.loadingNowFilmsConstraintLayout.visibility = View.GONE
+                setNowFilmsData(filmsNowData)
             }
-            is AppState.Loading -> {
-                binding.loadingConstraintLayout.visibility = View.VISIBLE
+            is AppState.SuccessLoadingUpcomingFilms -> {
+                val filmsUpcomingData = appState.filmsUpcomingData
+                binding.loadingUpcomingFilmsConstraintLayout.visibility = View.GONE
+                setUpcomingFilmsData(filmsUpcomingData)
             }
-            is AppState.Error -> {
-                binding.loadingConstraintLayout.visibility = View.GONE
+            is AppState.LoadingNowFilms -> {
+                binding.loadingNowFilmsConstraintLayout.visibility = View.VISIBLE
+            }
+            is AppState.LoadingUpcomingFilms -> {
+                binding.loadingUpcomingFilmsConstraintLayout.visibility = View.VISIBLE
+            }
+            is AppState.ErrorNowFilmsLoading -> {
+                binding.loadingNowFilmsConstraintLayout.visibility = View.GONE
                 Snackbar
-                    .make(binding.mainConstraintLayout, "Error", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Reload") { viewModel.getFilmsFromLocalSource() }
+                    .make(binding.nowFilmConstraintLayout, "Error", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Reload") { viewModel.getNowFilmsFromServer() }
                     .show()
+            }
+            is AppState.ErrorUpcomingFilmsLoading -> {
+                binding.loadingUpcomingFilmsConstraintLayout.visibility = View.GONE
+                Snackbar
+                    .make(binding.upcomingFilmConstraintLayout, "Error", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Reload") { viewModel.getUpcomingFilmsFromServer() }
+                    .show()
+
             }
         }
     }
 
-    private fun setData(filmsData: List<Film>) {
-        filmAdapter.setData(filmsData)
+    private fun setUpcomingFilmsData(filmsUpcomingData: List<Film>) {
+        filmUpcomingAdapter.setData(filmsUpcomingData)
+    }
+
+    private fun setNowFilmsData(filmsNowData: List<Film>) {
+        filmNowAdapter.setData(filmsNowData)
     }
 }
